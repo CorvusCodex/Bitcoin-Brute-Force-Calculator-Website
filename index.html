@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Time Calculator for Bitcoin Brute forcing private keys</title>
+</head>
+<body>
+    <h1>Time Calculator for Bitcoin Brute forcing private keys</h1>
+    <p>Developed by: Corvus Codex - <a href="https://github.com/CorvusCodex">https://github.com/CorvusCodex</a></p>
+    <p>Support my work:</p>
+    <ul>
+        <li>BTC: bc1q7wth254atug2p4v9j3krk9kauc0ehys2u8tgg3</li>
+        <li>ETH: 0x68B6D33Ad1A3e0aFaDA60d6ADf8594601BE492F0</li>
+    </ul>
+    <hr>
+
+    <script type="text/javascript">
+        function calculate_time_to_crack(num_keys_per_min) {
+            const total_possible_keys = 2**256;
+            const keys_per_second = num_keys_per_min / 60;
+            const time_to_crack_seconds = total_possible_keys / keys_per_second;
+            const time_to_crack_years = time_to_crack_seconds / (60 * 60 * 24 * 365);
+            return time_to_crack_years;
+        }
+
+        const num_keys_per_min = parseFloat(prompt("Enter the number of private keys generated per minute: "));
+        const time_to_crack = calculate_time_to_crack(num_keys_per_min);
+
+        document.write("<hr>");
+        document.write(`<p>The approximate time to crack a Bitcoin address is ${time_to_crack.toFixed(2)} years.</p>`);
+        document.write("<hr>");
+        document.write("<p>You think calculation is not correct? Sorry, but the calculation is correct. The number of possible private keys for a Bitcoin address is extremely large (2^256), so even with a very high rate of private key generation (1 billion per minute), it would still take an incredibly long time to crack a Bitcoin address by brute force. This is one of the reasons why Bitcoin is considered to be secure.</p>");
+        document.write("<hr>");
+    </script>
+</body>
+</html>
